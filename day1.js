@@ -5,6 +5,7 @@ var getFloor = function(directions) {
   newdir = Array.from(directions);
 
   currentFloor = 0;
+  
   var updateFloor = newdir.forEach(function(step) {
     if(step == "(") {
       currentFloor += 1;
