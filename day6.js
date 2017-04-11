@@ -13,6 +13,11 @@ for(step1 = 0; step1 < 1000; step1++) {
   grid.push(row);
 }
 
+// Part 2
+// Each light has a brightness
+// now lights should be an object and each co-ord should have a value of brightness. (like present drop) but an if statement to ensure reductions can go below 0 off = -1 on = +1 toggle +2
+// and then lights[value].length
+
 var changeLights = function (grid, x1, y1, x2, y2, direction) {
   // direction can be on off or toggle
   for(curY = y1; curY <= y2; curY++) {
