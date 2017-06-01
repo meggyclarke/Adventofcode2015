@@ -1,13 +1,13 @@
 // Lights
 
-var grid = [];
 
-var direction = false
+
+var grid = [];
 
 for(step1 = 0; step1 < 1000; step1++) {
   var row = [];
   for(step2 = 0; step2 < 1000; step2++) {
-    row.push(false);
+    row.push(0);
 
   }
   grid.push(row);
@@ -23,16 +23,19 @@ var changeLights = function (grid, x1, y1, x2, y2, direction) {
   for(curY = y1; curY <= y2; curY++) {
     for(curX = x1; curX <= x2; curX++) {
       if(direction == 'off'){
-        grid[curY][curX] = false;
+        if(grid[curY][curX] != 0){
+          grid[curY][curX] = grid[curY][curX] - 1;
+        }
       }else if(direction == 'on') {
-          grid[curY][curX] = true;
+          grid[curY][curX] =  grid[curY][curX] + 1;
       }else if(direction == 'toggle') {
-        grid[curY][curX] = !grid[curY][curX];
+        grid[curY][curX] = grid[curY][curX] + 2;
       }
     }
   }
   return grid;
 }
+
 
 var parseCoords = function (coord) {
   var coord1 = coord.split(',');
@@ -67,10 +70,8 @@ var result = function (inst) {
 
   var count = 0
   grid.forEach(function (row){
-    row.forEach(function (spot){
-      if(spot == true){
-        count = count + 1;
-      }
+    row.forEach(function (lights){
+        count = count + lights;
     });
   });
   console.log(count);
